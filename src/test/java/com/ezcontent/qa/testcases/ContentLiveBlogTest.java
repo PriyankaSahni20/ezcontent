@@ -7,9 +7,6 @@ import com.ezcontent.qa.pages.ContentLiveBlogPage;
 
 public class ContentLiveBlogTest extends ContentLiveBlogPage {
 	
-			
-		
-	
 		@Test(priority=1)
 		public void loginTest() {
 			logger = extent.createTest("loginTest");	
@@ -18,6 +15,7 @@ public class ContentLiveBlogTest extends ContentLiveBlogPage {
 		
  	    @Test(priority=2)
  	    public void navigatetoContentLiveBlogPage() {
+ 	    	log.info("Navigating to Live Blog Page");
  	    	logger = extent.createTest("navigatetoContentLiveBlogPage");
  	    String content	= contentliveblogPage.contentHeading();
  	    Assert.assertEquals(content, prop.getProperty("contentHeading"));

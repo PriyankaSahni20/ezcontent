@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import com.ezcontent.qa.base.TestBase;
 import com.ezcontent.qa.util.TestUtil;
@@ -22,7 +23,7 @@ public class ArticleMapPage2 extends TestBase {
   WebElement article;
   @FindBy(xpath="//h1[@class='js-quickedit-page-title page-title']")
   WebElement createArticle;
-  @FindBy(className = "fieldset__label")
+  @FindBy(xpath="//fieldset[@class='required-fields field-group-fieldset fieldset js-form-item form-item js-form-wrapper form-wrapper']//span[@class='fieldset__label']")
   List <WebElement> subSections;
   @FindBy(xpath="//label[@class='form-item__label js-form-required form-required']")
   WebElement titleFieldLabel;
@@ -126,7 +127,10 @@ public class ArticleMapPage2 extends TestBase {
   WebElement linkTextLabel;
   @FindBy(xpath="//input[@name='field_content[0][subform][field_link][0][title]']")
   WebElement linkTextField;
-  
+  @FindBys({@FindBy(xpath = "//li[@class = 'menu-item menu-item--expanded']/a[@href ='/admin/content']/following-sibling::ul/li/a")})
+ 	List<WebElement> contentList;
+  @FindBy(xpath="//summary[@class='claro-details__summary claro-details__summary--accordion-item']")
+    List<WebElement> articleContentList;
   
 
   public ArticleMapPage2() {
@@ -299,5 +303,24 @@ public class ArticleMapPage2 extends TestBase {
 	return articleCreated.isDisplayed();
 	}
 
+//   public boolean list() throws InterruptedException {
+//		
+//		Wait.Pause(driver, 5000);
+//		boolean Flag = false;
+//		List<WebElement> menus = contentList;
+//		System.out.println(menus.size());
+//		for(WebElement element: menus) {
+//			System.out.println(element.getText());
+//			if(element.getText().equalsIgnoreCase("Add Content"))
+//			{
+//				
+//				Flag = element.isDisplayed();
+//				TestUtil.mousehover(driver, element);
+//			}	
+//		}
+//		 System.out.println("Menu Item is not present");
+//		return Flag;			
+//			
+//	}
   
 }
